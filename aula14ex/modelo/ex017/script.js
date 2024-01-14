@@ -1,12 +1,19 @@
-function verificar() {
-    var num = window.document.querySelector('input#txtnum').value.trim()
-    var res = window.document.querySelector('div#res')
-    if (num === '') {
-        alert('Por favor, digite um número!')
-        return
+function tabuada() {
+    let num = document.getElementById('txtn')
+    let tab = document.getElementById('seltab')
+    if (num.value.length == 0) {
+        window.alert('Por favor, digite um número!')
+    } else {
+        let n = Number(num.value)
+        let c = 1
+        tab.innerHTML = ''
+        while (c <= 10) {
+            let item = document.createElement('option')
+            item.text = `${n} x ${c} = ${n * c}`
+            item.value = `tab${c}`
+            tab.appendChild(item)
+            c++
+        }
     }
-    res.innerHTML = 'Tabuada: <br>'
-    for (var c = 1; c <= 10; c++) {
-        res.innerHTML += `${num} x ${c} = ${num * c} <br>`
-    }
+
 }
