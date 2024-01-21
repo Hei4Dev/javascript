@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula de Bhaskara</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Resolvendo Bhaskara</h1>
+    <button onclick="calcular()">Calcular</button>
+    <div id="res">Considerando uma equação no formato <strong>ax² + bx + c = 0</strong>, aperte o botão acima para calcular o valor de Δ.</div>
+    <script>
+        function calcular() {
+    let a = prompt('Qual o valor de a?');
+    let b = prompt('Qual o valor de b?');
+    let c = prompt('Qual o valor de c?');
+
+    // Converte os valores para números
+    a = parseFloat(a);
+    b = parseFloat(b);
+    c = parseFloat(c);
+
+    // Calcula o discriminante (Δ)
+    let delta = b * b - 4 * a * c;
+
+    // Verifica o valor do discriminante
+    if (delta < 0) {
+        // Sem raízes reais
+        res.innerHTML = '<h1>Resolvendo Bhaskara</h1><p>A equação não possui raízes reais.</p>';
+    } else if (delta === 0) {
+        // Uma raiz real
+        let x = -b / (2 * a);
+        res.innerHTML = `<h1>Resolvendo Bhaskara</h1><p>A equação possui uma raiz real: x = ${x.toFixed(2)}</p>`;
+    } else {
+        // Duas raízes reais
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        res.innerHTML = `<h1>Resolvendo Bhaskara</h1><p>A equação possui duas raízes reais: x₁ = ${x1.toFixed(2)} e x₂ = ${x2.toFixed(2)}</p>`;
+    }
+}
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de temperaturas</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Convesor de Temperaturas</h1>
+    <button onclick="converter()">Converter</button>
+    <div id="res">Clique no botão acima para iniciar.</div>
+    <script>
+        function converter() {
+            let temperaturaString = prompt('Digite uma temperatura em °C (Celsius)');
+            let temperatura = parseFloat(temperaturaString.replace(',', '.'));
+            let res = document.querySelector('#res');
+            let kelvin = temperatura + 273.15;
+            let fahrenheit = (9 / 5) * temperatura + 32;
+
+            res.innerHTML = `<h2>A temperatura de ${temperatura}°C, corresponde a...</h2><p>${kelvin.toFixed(2)}°K (Kelvin)</p><br><p>${fahrenheit.toFixed(2)}°F (Fahrenheit)</p>`;
+        }
+    </script>
+</body>
+
+</html>

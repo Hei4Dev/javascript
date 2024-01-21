@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço mudou</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Preço mudou</h1>
+    <button onclick="verificar()">Verificar</button>
+    <div id="res">Clique no botão acima para analisar a mudança de preço.</div>
+    <script>
+        function verificar() {
+    let precoanterior = parseFloat(prompt('Qual era o preço anterior do produto?'));
+    let precoatual = parseFloat(prompt('Qual é o preço atual do produto?'));
+    let carobarato;
+    let subiu;
+    
+    // Calcula a diferença de preço
+    let diferenca = precoatual - precoanterior;
+
+    // Verifica se o produto está mais caro ou mais barato
+    if (diferenca < 0) {
+        carobarato = 'Hoje o produto está mais barato.';
+        subiu = false;
+    } else if (diferenca > 0) {
+        carobarato = 'Hoje o produto está mais caro.';
+        subiu = true;
+    } else {
+        carobarato = 'O preço do produto permanece o mesmo.';
+    }
+
+    // Calcula a porcentagem de variação
+    let porcentagem = (Math.abs(diferenca) / precoanterior) * 100;
+
+    // Exibe o resultado na página
+    let res = document.querySelector('#res');
+    res.innerHTML = `
+        <h1>Analisando os valores informados</h1>
+        <p>O produto custava R$ ${precoanterior.toFixed(2)} e agora custa R$ ${precoatual.toFixed(2)}</p>
+        <p>${carobarato}</p>
+        <p>O preço ${subiu ? 'subiu' : 'desceu'} R$ ${Math.abs(diferenca).toFixed(2)}</p>
+        <p>A variação foi de ${porcentagem.toFixed(2)}%</p>
+    `;
+}
+
+    </script>
+</body>
+
+</html>

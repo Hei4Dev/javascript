@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do aluno</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Situação do aluno</h1>
+    <button onclick="entrar()">Entrar com as notas</button>
+    <div id="res">Clique no botão acima para informar as notas do aluno.</div>
+    <script>
+        function entrar() {
+    // Solicita as notas ao usuário
+    let nome = prompt('Qual o nome do aluno?')
+    let nota1 = parseFloat(prompt(`Digite a nota da primeira avaliação de ${nome}:`));
+    let nota2 = parseFloat(prompt(`Digite a nota da segunda avaliação de ${nome}:`));
+
+    // Calcula a média das notas
+    let media = (nota1 + nota2) / 2;
+
+    // Classifica o aluno com base na média
+    let status;
+    if (media >= 6) {
+        status = 'APROVADO';
+    } else if (media >= 3) {
+        status = 'EM RECUPERAÇÃO';
+    } else {
+        status = 'REPROVADO';
+    }
+
+    // Exibe o resultado na página
+    let res = document.querySelector('#res');
+    res.innerHTML = `
+        <h1>Resultado da Avaliação</h1>
+        <p>Nota 1: ${nota1.toFixed(2)}</p>
+        <p>Nota 2: ${nota2.toFixed(2)}</p>
+        <p>A média é ${media.toFixed(2)}</p>
+        <p>O aluno está ${status}</p>
+    `;
+}
+
+    </script>
+</body>
+
+</html>
